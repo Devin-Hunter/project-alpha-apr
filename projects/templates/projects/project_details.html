@@ -35,7 +35,7 @@
                 <p>{{ project_details.description }}</p>
                 <h2>Tasks</h2>
                 <p>
-                    <a>Create a new task</a>
+                    <a style="text-decoration: none;" href="{% url 'create_task' %}">Create a new task</a>
                 </p>
                 {% if project_details.tasks.all|length == 0 %}
                     <p>This project has no tasks</p>
