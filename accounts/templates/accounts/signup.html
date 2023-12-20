@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                        Hello, {{ user.username }}
+                        <li>
+                            <a style="text-decoration: none;" href="{% url 'show_my_tasks' %}">My tasks &nbsp;&nbsp;</a>
+                        </li>
+                        <li>
+                            <a style="text-decoration: none;" href="{% url 'list_projects' %}">My projects &nbsp;&nbsp;</a>
+                        </li>
+                        <li>
+                            <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li>
+                            <a style="text-decoration: none;" href="{% url 'signup' %}">Signup</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div>
+                <h1>Signup</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button>Signup</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
