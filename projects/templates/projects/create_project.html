@@ -10,7 +10,7 @@
                     {% if user.is_authenticated %}
                         Hello, {{ user.username }}
                         <li>
-                            <a>My tasks &nbsp;&nbsp;</a>
+                            <a style="text-decoration: none;" href="{% url 'show_my_tasks' %}">My tasks &nbsp;&nbsp;</a>
                         </li>
                         <li>
                             <a style="text-decoration: none;" href="{% url 'list_projects' %}">My projects &nbsp;&nbsp;</a>

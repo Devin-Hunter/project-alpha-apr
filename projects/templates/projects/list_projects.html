@@ -10,20 +10,20 @@
                     {% if user.is_authenticated %}
                         Hello, {{ user.username }}
                         <li>
-                            <a>My tasks &nbsp;&nbsp;</a>
+                            <a style="text-decoration: none;" href="{% url 'show_my_tasks' %}">My tasks &nbsp;&nbsp;</a>
                         </li>
                         <li>
                             <a style="text-decoration: none;" href="{% url 'list_projects' %}">My projects &nbsp;&nbsp;</a>
                         </li>
                         <li>
-                            <a>Logout</a>
+                            <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li>
                             <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
                         </li>
                         <li>
-                            <a>Signup</a>
+                            <a style="text-decoration: none;" href="{% url 'signup' %}">Signup</a>
                         </li>
                     {% endif %}
                 </ul>
