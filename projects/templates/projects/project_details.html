@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Lists of Projects</title>
+        <title>Project Details</title>
     </head>
     <body>
         <header>
@@ -16,14 +16,14 @@
                             <a style="text-decoration: none;" href="{% url 'list_projects' %}">My projects &nbsp;&nbsp;</a>
                         </li>
                         <li>
-                            <a>Logout</a>
+                            <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li>
                             <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
                         </li>
                         <li>
-                            <a>Signup</a>
+                            <a style="text-decoration: none;" href="{% url 'signup' %}">Signup</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -31,28 +31,33 @@
         </header>
         <main>
             <div>
-                <h1>My Projects</h1>
+                <h1>{{ project_details.name }}</h1>
+                <p>{{ project_details.description }}</p>
+                <h2>Tasks</h2>
                 <p>
-                    <a>Create a new project</a>
+                    <a>Create a new task</a>
                 </p>
-                {% if list_of_projects|length == 0 %}
-                    <p>You are not assigned to any projects</p>
+                {% if project_details.tasks.all|length == 0 %}
+                    <p>This project has no tasks</p>
                 {% else %}
                     <table>
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Number of tasks</th>
+                                <th>Assignee</th>
+                                <th>Start date</th>
+                                <th>Due date</th>
+                                <th>Is completed</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for my_projects in list_of_projects %}
+                            {% for task in project_details.tasks.all %}
                                 <tr>
-                                    <td>
-                                        <a style="text-decoration: none"
-                                           href="{% url 'show_project' my_projects.id %}">{{ my_projects.name }}</a>
-                                    </td>
-                                    <td>{{ my_projects.tasks.all|length }}</td>
+                                    <td>{{ task.name }}</td>
+                                    <td>{{ task.assignee }}</td>
+                                    <td>{{ task.start_date|date:"j N Y" }}</td>
+                                    <td>{{ task.due_date|date:"j N Y" }}</td>
+                                    <td>{{ task.is_complete|yesno }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
