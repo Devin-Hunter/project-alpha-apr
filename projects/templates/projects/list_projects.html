@@ -10,20 +10,20 @@
                     {% if user.is_authenticated %}
                         Hello, {{ user.username }}
                         <li>
-                            <a style="text-decoration: none;" href="{% url 'show_my_tasks' %}">My tasks &nbsp;&nbsp;</a>
+                            <a>My tasks &nbsp;&nbsp;</a>
                         </li>
                         <li>
                             <a style="text-decoration: none;" href="{% url 'list_projects' %}">My projects &nbsp;&nbsp;</a>
                         </li>
                         <li>
-                            <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a>
+                            <a>Logout</a>
                         </li>
                     {% else %}
                         <li>
                             <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
                         </li>
                         <li>
-                            <a style="text-decoration: none;" href="{% url 'signup' %}">Signup</a>
+                            <a>Signup</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -33,7 +33,7 @@
             <div>
                 <h1>My Projects</h1>
                 <p>
-                    <a style="text-decoration: none;" href="{% url 'create_project' %}">Create a new project</a>
+                    <a>Create a new project</a>
                 </p>
                 {% if list_of_projects|length == 0 %}
                     <p>You are not assigned to any projects</p>
@@ -49,8 +49,7 @@
                             {% for my_projects in list_of_projects %}
                                 <tr>
                                     <td>
-                                        <a style="text-decoration: none"
-                                           href="{% url 'show_project' my_projects.id %}">{{ my_projects.name }}</a>
+                                        <a>{{ my_projects.name }}</a>
                                     </td>
                                     <td>{{ my_projects.tasks.all|length }}</td>
                                 </tr>
